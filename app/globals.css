@@ -1,0 +1,314 @@
+@import "tailwindcss";
+
+/*
+ ─────────────────────────────────────────────────────────────
+  ДИЗАЙН-СИСТЕМА · «Вера Быстрова»
+  Направление: тёплый editorial-минимализм, много воздуха.
+  Не кремово-терракотовый дефолт: фон — тёплая кость,
+  единственный акцент — глубокое вино (bordeaux), а «фишка»
+  сайта — тонкая линия-акцент, будто режиссёрский росчерк,
+  которая ведёт по странице (режиссура / тайминг вечера).
+ ─────────────────────────────────────────────────────────────
+*/
+
+/*
+  ШРИФТ ЗАГОЛОВКОВ (Patch 1.2) — Santa Maria Sans Black.
+  Файл: public/fonts/display.woff2 (© 1994 Gareth Hague / Alias).
+  Один начертание (Black), поэтому у .display / .name-mega вес = 400 —
+  жирность даёт сам шрифт, синтетический bold отключён.
+*/
+@font-face {
+  font-family: "Santa Maria Sans";
+  src: url("/fonts/display.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  --color-bg: #f4f0e8;        /* тёплая кость */
+  --color-bg-2: #ebe4d7;      /* мягкий беж (панели) */
+  --color-bg-3: #e2d9c9;      /* беж потемнее */
+  --color-ink: #1e1b18;       /* тёплый графит (текст) */
+  --color-ink-soft: #4a453e;  /* приглушённый текст */
+  --color-muted: #7c756a;     /* подписи */
+  --color-line: #d8cfbf;      /* хайрлайны */
+  --color-accent: #ecb735;    /* тёплый жёлтый — единственный акцент */
+  --color-accent-2: #f5cd63;  /* светлее (тинты/подсветка) */
+  --color-accent-deep: #d99f22; /* глубже (hover) */
+  --color-paper: #faf7f1;     /* карточки/попап */
+  --color-espresso: #221e1a;  /* тёмная панель + текст на жёлтом */
+
+  --font-sans: "Comfortaa Variable", system-ui, sans-serif;
+  /* Заголовки: Santa Maria Sans Black → фолбэк Comfortaa */
+  --font-display: "Santa Maria Sans", "Comfortaa Variable", system-ui, sans-serif;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+/* Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+::selection {
+  background: var(--color-accent);
+  color: var(--color-espresso);
+}
+
+/* ── Типографика ── */
+.display {
+  font-family: var(--font-display);
+  font-weight: 400; /* шрифт уже Black — синтетический bold не нужен */
+  letter-spacing: 0.005em;
+  line-height: 1.08;
+}
+/* Ключевое слово — «маркерное» выделение жёлтым (живой, рукотворный акцент) */
+.hl {
+  color: var(--color-ink);
+  font-weight: 700;
+  background-image: linear-gradient(
+    to bottom,
+    transparent 56%,
+    rgba(236, 183, 53, 0.55) 56%
+  );
+  background-repeat: no-repeat;
+  padding: 0 0.05em;
+}
+/*
+  В заголовках .hl живёт внутри Santa Maria Sans: x-height выше (0.633em против
+  0.547em у Comfortaa), поэтому маркер начинается ниже — иначе «съезжает» вверх.
+  Жирность здесь не нужна: шрифт и так Black.
+*/
+.display .hl,
+.name-mega .hl {
+  font-weight: 400;
+  background-image: linear-gradient(
+    to bottom,
+    transparent 58%,
+    rgba(236, 183, 53, 0.55) 58%
+  );
+}
+/* Цитаты — обычный Comfortaa, чуть мягче */
+.quote {
+  font-weight: 500;
+  color: var(--color-ink-soft);
+}
+.eyebrow {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.82rem;
+  letter-spacing: 0.01em;
+  color: var(--color-muted);
+}
+
+/* Тонкая «режиссёрская» линия-акцент */
+.hairline {
+  height: 1px;
+  background: var(--color-line);
+  transform-origin: left center;
+}
+
+/* базовый reveal-элемент (управляется GSAP) */
+.reveal {
+  will-change: transform, opacity;
+}
+
+/* маска для SplitText-строк */
+.line-mask {
+  overflow: hidden;
+  padding-bottom: 0.06em;
+}
+
+/* Магнитные / общие кнопки */
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
+  padding: 1.05rem 1.7rem;
+  border-radius: 12px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: background 0.4s var(--ease-out), color 0.4s var(--ease-out),
+    border-color 0.4s var(--ease-out);
+  white-space: nowrap;
+}
+.btn-primary {
+  background: var(--color-accent);
+  color: var(--color-espresso);
+}
+.btn-primary:hover {
+  background: var(--color-accent-deep);
+}
+.btn-ghost {
+  background: transparent;
+  color: var(--color-ink);
+  border-color: var(--color-line);
+}
+.btn-ghost:hover {
+  border-color: var(--color-ink);
+}
+.btn-light {
+  background: var(--color-paper);
+  color: var(--color-espresso);
+}
+.btn-light:hover {
+  background: #fff;
+}
+
+/* Ссылка с подчёркиванием-росчерком */
+.ulink {
+  position: relative;
+  color: inherit;
+  text-decoration: none;
+}
+.ulink::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform 0.45s var(--ease-out);
+}
+.ulink:hover::after {
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+
+/* Тень «мягкая» */
+.soft-shadow {
+  box-shadow: 0 24px 50px -34px rgba(43, 30, 20, 0.22);
+}
+
+/* focus-visible для доступности */
+:where(a, button, input, select, textarea):focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* Скрыть скроллбар у горизонтальных лент */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* уважение к reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ── Редизайн: мега-типографика и работа с фото ── */
+.name-mega {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 0.9;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+.kicker {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.78rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+/* Patch 1.2: фото сразу показываются в настоящих цветах (без ч/б и затемнения) */
+.ph-gray {
+  transition: transform 0.9s var(--ease-out);
+}
+/* «обводка»-контур крупного текста (акценты в manifesto) */
+.text-outline {
+  color: transparent;
+  -webkit-text-stroke: 1.4px var(--color-ink);
+}
+.text-outline-paper {
+  color: transparent;
+  -webkit-text-stroke: 1.4px rgba(250, 247, 241, 0.55);
+}
+
+/* ── Patch 1.2: квиз-заявка ── */
+.quiz-opt {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  width: 100%;
+  text-align: left;
+  padding: 1rem 1.15rem;
+  border-radius: 14px;
+  border: 1px solid var(--color-line);
+  background: var(--color-paper);
+  font-weight: 600;
+  font-size: 0.98rem;
+  cursor: pointer;
+  transition: border-color 0.35s var(--ease-out),
+    background 0.35s var(--ease-out), transform 0.35s var(--ease-out);
+}
+.quiz-opt:hover {
+  border-color: var(--color-accent-deep);
+  transform: translateY(-1px);
+}
+.quiz-opt[data-active="true"] {
+  border-color: var(--color-accent-deep);
+  background: color-mix(in srgb, var(--color-accent) 16%, var(--color-paper));
+}
+.quiz-dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  border: 1.5px solid var(--color-line);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  transition: border-color 0.3s, background 0.3s;
+}
+.quiz-opt[data-active="true"] .quiz-dot {
+  border-color: var(--color-accent-deep);
+  background: var(--color-accent);
+}
+.quiz-opt[data-active="true"] .quiz-dot::after {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: var(--color-espresso);
+}

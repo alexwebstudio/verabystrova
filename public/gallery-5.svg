@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900">
+  <defs>
+    <linearGradient id="g5" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#efe8db"/>
+      <stop offset="1" stop-color="#d8ccb8"/>
+    </linearGradient>
+    <radialGradient id="b5" cx="0.7" cy="0.3" r="0.8">
+      <stop offset="0" stop-color="#ecb735" stop-opacity="0.14"/>
+      <stop offset="1" stop-color="#ecb735" stop-opacity="0"/>
+    </radialGradient>
+    
+  <filter id="gn5"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/>
+  <feColorMatrix type="saturate" values="0"/>
+  <feComponentTransfer><feFuncA type="linear" slope="0.05"/></feComponentTransfer>
+  <feComposite operator="over" in2="SourceGraphic"/></filter>
+  </defs>
+  <rect width="1200" height="900" fill="url(#g5)"/>
+  <rect width="1200" height="900" fill="url(#b5)"/>
+  <g opacity="0.4" stroke="#e2d9c9" stroke-width="1.5" fill="none">
+    <circle cx="840" cy="450" r="198"/>
+    <path d="M0 648 Q 600 630 1200 630"/>
+  </g>
+  <rect width="1200" height="900" filter="url(#gn5)" opacity="0.6"/>
+  <text x="28" y="874" font-family="Manrope, sans-serif" font-size="16" letter-spacing="3" fill="#9a9083">ФОТО 05</text>
+</svg>
