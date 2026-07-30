@@ -9,6 +9,12 @@
  */
 
 export const siteConfig = {
+  /*
+    Домен сайта. Используется в SEO: canonical, sitemap, Open Graph,
+    structured data. При смене домена правится ТОЛЬКО здесь.
+  */
+  url: "https://verabystrova.site",
+
   host: {
     name: "Вера Быстрова",
     first: "Вера",

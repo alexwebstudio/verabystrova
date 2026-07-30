@@ -92,7 +92,7 @@ export default function Hero() {
           <div className="hero-photo group relative order-1 lg:order-none w-full">
             <div className="hero-photo-mask relative overflow-hidden rounded-[16px] aspect-[3/3.1] sm:aspect-[3/4] lg:aspect-[3/4.3] max-w-[420px] sm:max-w-[500px] w-full mx-auto lg:mx-0 ring-1 ring-paper/10">
               <img
-                src="/portrait-hero.png"
+                src="/portrait-hero.webp"
                 alt="Вера Быстрова"
                 className="hero-photo-img w-full h-full object-cover"
               />

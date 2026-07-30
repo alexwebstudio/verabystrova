@@ -5,12 +5,10 @@ import { gsap, SplitText, useGSAP, prefersReduced } from "@/lib/gsap";
 
 /* Patch 1.2 — «Коротко о главном»: только текст, без иконок */
 const FACTS: { lead: string; rest: string }[] = [
-  { lead: "Школа КВН", rest: "4 года на сцене — юмор, находчивость и словесные баттлы с гостями" },
-  { lead: "Диплом с отличием", rest: "по режиссуре мероприятий (2024) — в дополнение к трём высшим" },
-  { lead: "Никаких пошлых конкурсов", rest: "и «тамадинских» шаблонов — только то, за что не стыдно" },
-  { lead: "Аппаратура премиум-класса", rest: "звук на зал до 200 гостей, проектор, свет, дым, лазеры" },
+  { lead: "Аппаратура премиум-класса", rest: "звук на зал до 200 гостей, профессиональные микрофоны" },
+  { lead: "Свет и картинка", rest: "светомузыка, дым, лазеры, проектор с экраном" },
   { lead: "Диджей в команде", rest: "музыка всех эпох, стилей и национальных традиций" },
-  { lead: "Договор и сценарный план", rest: "с каждым заказчиком — всё по минутам, без импровизаций «на авось»" },
+  { lead: "Гибкие цены", rest: "расчёт зависит от количества гостей, даты и времени проведения" },
 ];
 
 export default function About() {
@@ -95,16 +93,15 @@ export default function About() {
           <div>
             <div className="ab-copy max-w-[560px] space-y-6">
               <p className="ab-p text-xl sm:text-2xl leading-snug font-medium">
-                15 лет я организую праздники: планирую вечер по минутам, но
-                помню, что праздник — не театр, и умею мгновенно перестроиться
-                под настроение зала.
+                15 лет я организую праздники. Помню, что праздник — не театр:
+                умею мгновенно перестроиться под настроение зала и не иду по
+                бумажке, если гости захотели другого.
               </p>
               <p className="ab-p text-muted leading-relaxed">
                 У праздника нет второго шанса — поэтому работаю с ювелирной
-                точностью. С каждым заказчиком заключаю договор, где прописаны
-                все нюансы, и составляю подробный сценарный план с таймингом.
-                Не бывает двух похожих праздников — как не бывает двух
-                одинаковых людей.
+                точностью. Не бывает двух похожих праздников, как не бывает
+                двух одинаковых людей: готовых решений в папке у меня нет,
+                каждая программа собирается под ваш повод и ваших гостей.
               </p>
               <p className="ab-p text-muted leading-relaxed">
                 Я — ведущая с юмором: четыре года играла за команду
@@ -114,22 +111,23 @@ export default function About() {
               </p>
               <p className="ab-p text-muted leading-relaxed">
                 Постоянно учусь у лучших ведущих и бизнес-тренеров праздников.
-                В 2024 году с отличием закончила курс по режиссуре мероприятий —
-                к трём дипломам о высшем образовании добавила четвёртый.
+                В 2024 году с отличием закончила курс по режиссуре мероприятий:
+                к трём высшим образованиям — педагог, психолог, политолог —
+                добавился четвёртый диплом.
               </p>
             </div>
 
             <div className="grid grid-cols-[1.4fr_1fr] gap-4 sm:gap-6 mt-12">
               <div className="ab-photo group relative overflow-hidden rounded-[16px] aspect-[4/5]">
                 <img
-                  src="/portrait-about-1.png"
+                  src="/portrait-about-1.webp"
                   alt="Вера Быстрова"
                   className="w-full h-[112%] object-cover"
                 />
               </div>
               <div className="ab-photo group relative overflow-hidden rounded-[16px] aspect-[3/5] mt-10">
                 <img
-                  src="/portrait-about-2.png"
+                  src="/portrait-about-2.webp"
                   alt="На мероприятии"
                   className="w-full h-[112%] object-cover"
                 />
@@ -139,7 +137,7 @@ export default function About() {
 
           {/* Правая колонка: «Коротко о главном» — только типографика, без иконок */}
           <div className="ab-facts bg-paper rounded-[16px] p-7 sm:p-9 soft-shadow lg:sticky lg:top-24">
-            <span className="kicker text-muted">Коротко о главном</span>
+            <span className="kicker text-muted">Техника и условия</span>
             <div className="mt-6 divide-y divide-line">
               {FACTS.map((f, i) => (
                 <div key={i} className="ab-fact py-5 first:pt-4 last:pb-1">
